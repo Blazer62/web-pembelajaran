@@ -18,65 +18,112 @@
       href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
     />
     <style>
-      body {
+      * {
+        margin: 0;
+        box-sizing: border-box;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.7;
       }
 
       header {
-        background-color: #8b0000;
-        color: white;
-        padding: 10px 0;
         position: sticky;
         top: 0;
         z-index: 1000;
       }
 
-      .navbar a {
-        color: white;
-        text-decoration: none;
-        margin-left: 16px;
-        transition: color 0.3s;
-        font-size: 16px;
+      .navbar {
+        background-color: #8b0000;
+        padding: 8px 0;
       }
 
-      .navbar a:hover {
-        color: #e5e1de;
-      }
-
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: -20px;
-        background-color: #b30000;
+      .navbar-brand {
+        color: white !important;
         padding: 0;
-        list-style: none;
-        min-width: 220px;
-        z-index: 1000;
-        border-radius: 4px;
-      }
-
-      .dropdown:hover .dropdown-menu {
-        display: block;
-      }
-
-      .dropdown-menu li a {
-        display: block;
-        padding: 10px 16px;
-        color: white;
         text-decoration: none;
-        font-size: 15px;
       }
 
-      .dropdown-menu li a:hover {
+      .navbar-brand h2 {
+        color: white;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .navbar-brand p {
+        color: #e5e1de;
+        font-size: 12px;
+        margin: 0;
+      }
+
+      .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.5);
+        padding: 4px 8px;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+      }
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .navbar-nav .nav-link {
+        color: white !important;
+        font-size: 15px;
+        padding: 8px 16px;
+        transition: color 0.3s;
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link:focus {
+        color: #e5e1de !important;
+      }
+
+      .navbar-nav .dropdown-menu {
+        background-color: #b30000;
+        border: none;
+        padding: 0;
+        min-width: 220px;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        margin-top: 4px;
+      }
+
+      .navbar-nav .dropdown-menu .dropdown-item {
+        color: white;
+        padding: 10px 16px;
+        font-size: 15px;
+        transition: background-color 0.3s;
+      }
+
+      .navbar-nav .dropdown-menu .dropdown-item:hover,
+      .navbar-nav .dropdown-menu .dropdown-item:focus {
         background-color: #a50505;
         color: #e5e1de;
+      }
+
+      @media (max-width: 991.98px) {
+        .navbar-collapse {
+          padding: 10px 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.15);
+          margin-top: 8px;
+        }
+
+        .navbar-nav .nav-link {
+          padding: 10px 0;
+        }
+
+        .navbar-nav .dropdown-menu {
+          position: static;
+          float: none;
+          min-width: auto;
+          background-color: rgba(160, 0, 0, 0.5);
+          box-shadow: none;
+          margin-left: 16px;
+        }
+
+        .navbar-brand h2 {
+          font-size: 16px;
+        }
       }
 
       .judul-materi {
@@ -111,6 +158,7 @@
         cursor: pointer;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s, opacity 0.3s;
+        z-index: 999;
       }
 
       #btnTop:hover {
@@ -130,38 +178,125 @@
       footer a:hover {
         color: #e5e1de;
       }
+
+      @media (max-width: 767.98px) {
+        .judul-materi {
+          padding: 28px 16px;
+        }
+
+        .judul-materi h1 {
+          font-size: 24px;
+        }
+
+        .isi-materi {
+          padding: 24px 16px;
+        }
+
+        .isi-materi h2 {
+          font-size: 20px;
+          margin-top: 24px;
+        }
+
+        #btnTop {
+          bottom: 20px;
+          right: 20px;
+          padding: 10px 14px;
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        .judul-materi {
+          padding: 24px 12px;
+        }
+
+        .judul-materi h1 {
+          font-size: 20px;
+        }
+
+        .isi-materi {
+          padding: 20px 12px;
+        }
+
+        .isi-materi h2 {
+          font-size: 18px;
+        }
+
+        .isi-materi p,
+        .isi-materi li {
+          font-size: 14px;
+        }
+      }
     </style>
   </head>
   <body>
     <header>
-      <div
-        class="container d-flex flex-wrap justify-content-between align-items-center"
-      >
-        <div class="logo d-flex align-items-center gap-2" data-aos="fade-right">
-          <img src="Image/Logo SMKN.png" alt="Logo" style="height: 50px" />
-          <div>
-            <h2 class="mb-0">Bahasa Indonesia</h2>
-            <p class="mb-0">SMK Negeri 2 Banjarmasin</p>
-          </div>
-        </div>
-        <nav
-          class="navbar d-flex flex-wrap align-items-center"
-          data-aos="fade-left"
-        >
-          <a href="Beranda.html">Beranda</a>
-          <a href="Capaiantujan.html">Capaian & Tujuan</a>
-          <div class="dropdown">
-            <a href="#" class="dropdown">Materi</a>
-            <ul class="dropdown-menu">
-              <li><a href="Materi1.html">Teks Laporan Hasil Observasi</a></li>
-              <li><a href="Materi2.html">Teks Eksposisi</a></li>
-              <li><a href="Materi3.html">Teks Anekdot</a></li>
-              <li><a href="Materi4.html">Teks Cerita Sejarah</a></li>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+            <img src="Image/Logo SMKN.png" alt="Logo" style="height: 45px" />
+            <div>
+              <h2 class="mb-0">Bahasa Indonesia</h2>
+              <p>SMK Negeri 2 Banjarmasin</p>
+            </div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Beranda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Capaiantujan.html">Capaian & Tujuan</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Materi
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="Materi1.html"
+                      >Teks Laporan Hasil Observasi</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="Materi2.html"
+                      >Teks Eksposisi</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="Materi3.html">Teks Anekdot</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="Materi4.html"
+                      >Teks Cerita Sejarah</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Kontak.html">Kontak</a>
+              </li>
             </ul>
           </div>
-          <a href="Kontak.html">Kontak</a>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
 
     <div class="judul-materi">
@@ -206,12 +341,12 @@
               berkomitmen untuk memajukan pendidikan dengan teknologi digital
               dan metode pengajaran inovatif.
             </p>
-            <img src="Image/Logo SMKN.png" alt="Logo" height="50px" />
+            <img src="Image/Logo SMKN.png" alt="Logo" height="50" />
           </div>
           <div class="col-md-4 mb-3">
             <h5>Navigasi</h5>
             <ul class="list-unstyled">
-              <li><a href="Beranda.html">Beranda</a></li>
+              <li><a href="index.html">Beranda</a></li>
               <li><a href="Capaiantujan.html">Capaian & Tujuan</a></li>
               <li><a href="#">Materi</a></li>
               <li><a href="Kontak.html">Kontak</a></li>
